@@ -10,28 +10,19 @@ import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 
 const items = [
   {
-    icon: <SettingsSuggestRoundedIcon sx={{ color: 'text.secondary' }} />,
-    title: 'Adaptable performance',
-    description:
-      'Our product effortlessly adjusts to your needs, boosting efficiency and simplifying your tasks.',
+    title: 'Yüzlerce dizi, film, animasyon',
+
   },
   {
-    icon: <ConstructionRoundedIcon sx={{ color: 'text.secondary' }} />,
-    title: 'Built to last',
-    description:
-      'Experience unmatched durability that goes above and beyond with lasting investment.',
+    title: 'Beğen, kaydet, izle',
+
   },
   {
-    icon: <ThumbUpAltRoundedIcon sx={{ color: 'text.secondary' }} />,
     title: 'Great user experience',
-    description:
-      'Integrate our product into your routine with an intuitive and easy-to-use interface.',
+
   },
   {
-    icon: <AutoFixHighRoundedIcon sx={{ color: 'text.secondary' }} />,
     title: 'Innovative functionality',
-    description:
-      'Stay ahead with features that set new standards, addressing your evolving needs better than the rest.',
   },
 ];
 
