@@ -110,6 +110,12 @@ const Login = () => {
                   >
                     Submit
                   </Button>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                  >
+                    Sign in with Google
+                  </Button>
                 </Box>
               </Form>
             )}
