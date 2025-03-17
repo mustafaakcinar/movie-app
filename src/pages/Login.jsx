@@ -37,8 +37,8 @@ const Login = () => {
         }}
       >
         <Grid item xs={12} mb={3}>
-          <Typography variant="h3" color="primary" align="center">
-            STOCK APP
+          <Typography variant="h4" color="primary" align="center">
+            POSEIDON MOVIE AND SERIES
           </Typography>
         </Grid>
 
@@ -114,7 +114,7 @@ const Login = () => {
                     variant="contained"
                     type="submit"
                   >
-                    Sign in with Google
+                    Continue with Google 
                   </Button>
                 </Box>
               </Form>

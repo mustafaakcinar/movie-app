@@ -2,16 +2,15 @@ import Container from "@mui/material/Container"
 import Typography from "@mui/material/Typography"
 import Avatar from "@mui/material/Avatar"
 import LockIcon from "@mui/icons-material/Lock"
-import image from "../assets/result.svg"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import { Link } from "react-router-dom"
 import RegisterForm, { registerSchema } from "../components/RegisterForm"
 import { Formik } from "formik"
-import useApiRequests from "../services/useApiRequests"
+import { useAuthContext } from "../context/AuthProvider"
 
 const Register = () => {
-  const { register } = useApiRequests()
+  const {createUser} = useAuthContext()
 
   return (
     <Container maxWidth="lg">
@@ -26,8 +25,8 @@ const Register = () => {
         }}
       >
         <Grid item xs={12}>
-          <Typography variant="h3" color="primary" align="center">
-            STOCK APP
+          <Typography variant="h4" color="primary" align="center">
+          POSEIDON MOVIE AND SERIES
           </Typography>
         </Grid>
 
@@ -61,13 +60,13 @@ const Register = () => {
             }}
             validationSchema={registerSchema}
             onSubmit={(values, actions) => {
-              register(values)
+              createUser(values.email,values.password)
               actions.resetForm()
               actions.setSubmitting(false)
             }}
 
             //? Component prop'u ile Formumuz harici bir component haline getirilebilir.
-            //? bu sayade daha derli toplu bir validayon yapmak mümkün olacaktır.
+            //? bu sayede daha derli toplu bir validayon yapmak mümkün olacaktır.
             //? Ancak Formik props'larını bu component'e geçmek gerekir.
             component={(props) => <RegisterForm {...props} />}
           ></Formik>
@@ -75,12 +74,6 @@ const Register = () => {
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/">Do you have an account?</Link>
           </Box>
-        </Grid>
-
-        <Grid item xs={0} sm={7} md={6}>
-          <Container>
-            <img src={image} alt="" />
-          </Container>
         </Grid>
       </Grid>
     </Container>
