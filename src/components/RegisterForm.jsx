@@ -8,13 +8,6 @@ export const registerSchema = object({
   username: string()
     .max(20, "Kullanıcı adı 10 karakterden az olmalıdır.")
     .required("Kullanıcı adı zorunludur"),
-  firstName: string()
-    .max(20, "İsim 20 karakterden az olmalıdır.")
-    .required("İsim zorunludur"),
-  lastName: string()
-    .max(20, "Soyisim 30 karakterden az olmalıdır.")
-    .required("Soyisim zorunludur"),
-
   email: string()
     .email("Lütfen geçerli bir email giriniz.")
     .required("Email zorunludur"),
@@ -49,30 +42,6 @@ const RegisterForm = ({
           onBlur={handleBlur}
           error={touched.username && Boolean(errors.username)}
           helperText={errors.username}
-        />
-        <TextField
-          label="First Name"
-          name="firstName"
-          id="firstName"
-          type="text"
-          variant="outlined"
-          value={values.firstName}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={touched.firstName && Boolean(errors.firstName)}
-          helperText={errors.firstName}
-        />
-        <TextField
-          label="Last Name"
-          name="lastName"
-          id="lastName"
-          type="text"
-          variant="outlined"
-          value={values.lastName}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={touched.lastName && Boolean(errors.lastName)}
-          helperText={errors.lastName}
         />
         <TextField
           label="Email"

@@ -53,8 +53,6 @@ const Register = () => {
           <Formik
             initialValues={{
               username: "",
-              firstName: "",
-              lastName: "",
               email: "",
               password: "",
             }}

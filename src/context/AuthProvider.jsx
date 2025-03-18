@@ -1,5 +1,5 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import React, { createContext, useContext, useState } from "react";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../auth/firebase";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
@@ -16,6 +16,11 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(()=> {
+    userObserver()
+  },[])
+
+
   const createUser = async (email, password) => {
     try {
       // new user create method from firebase
@@ -28,7 +33,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const signIn = async (email, password) => {
+  const userSignIn = async (email, password) => {
     try {
       // login for user
      await signInWithEmailAndPassword(auth, email, password);
@@ -40,7 +45,33 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const values = { currentUser, createUser, signIn };
+  const userLogOut = async () => {
+    try {
+        signOut(auth)
+        toastSuccessNotify("You have logged out")
+        navigate("/login")
+    } catch (error) {
+        toastErrorNotify(error.message);
+    }
+  }
+
+//   bir kere çalıştırmamız yeterli giriş çıkışları kontrol eden firebase metodu
+  const userObserver = () => {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // console.log(user);
+            const {email,displayName,photoURL} = user
+            setCurrentUser({email,displayName,photoURL})
+        } else {
+          // User is signed out
+            // console.log("logged out");
+            setCurrentUser(false)
+        }
+      })
+  }
+
+
+  const values = { currentUser, createUser, userSignIn, userLogOut };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 

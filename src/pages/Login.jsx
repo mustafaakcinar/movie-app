@@ -11,7 +11,7 @@ import { useAuthContext } from "../context/AuthProvider";
 
 const Login = () => {
 
-  const {signIn} = useAuthContext()
+  const {userSignIn} = useAuthContext()
 
 
   const loginSchema = object({
@@ -69,7 +69,7 @@ const Login = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={(values, actions) => {
-              signIn(values.email,values.password)
+              userSignIn(values.email,values.password)
               actions.resetForm();
               actions.setSubmitting(false); //? isSubmitting (Boolean)
             }}
