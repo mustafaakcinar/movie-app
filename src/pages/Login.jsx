@@ -7,9 +7,13 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
-import logo from "../assets/img/cinema-background-csjrmkuhfvvumb2q.jpg";
+import { useAuthContext } from "../context/AuthProvider";
 
 const Login = () => {
+
+  const {signIn} = useAuthContext()
+
+
   const loginSchema = object({
     password: string()
       .required("Şifre Zorunludur")
@@ -65,6 +69,7 @@ const Login = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={(values, actions) => {
+              signIn(values.email,values.password)
               actions.resetForm();
               actions.setSubmitting(false); //? isSubmitting (Boolean)
             }}
@@ -103,12 +108,13 @@ const Login = () => {
                     error={touched.password && Boolean(errors.password)}
                     helperText={errors.password}
                   />
+                  
                   <Button
                     variant="contained"
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Submit
+                    Sing In
                   </Button>
                   <Button
                     variant="contained"
@@ -121,8 +127,16 @@ const Login = () => {
             )}
           </Formik>
 
+          <Box sx={{
+            display:"flex",
+            justifyContent:"space-between"
+          }}>
+          <Box sx={{ textAlign: "center", mt: 2 }}>
+            <Link to="/register">Forgot password?</Link>
+          </Box>
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/register">Do you have not an account?</Link>
+          </Box>
           </Box>
         </Grid>
       </Grid>
