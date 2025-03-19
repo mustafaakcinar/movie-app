@@ -1,7 +1,9 @@
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -82,7 +84,35 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  const values = { currentUser, createUser, userSignIn, userLogOut };
+
+  const googleProvider = () => {
+    //? Google ile giriş yapılması için kullanılan firebase metodu
+    const provider = new GoogleAuthProvider();
+    //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        navigate("/");
+        toastSuccessNotify("Logged in successfully");
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        console.log(error);
+        toastErrorNotify(error.message);
+      });
+  };
+
+
+
+
+
+
+
+
+
+
+
+  const values = { currentUser, createUser, userSignIn, userLogOut,googleProvider };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
