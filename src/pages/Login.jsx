@@ -11,7 +11,7 @@ import { useAuthContext } from "../context/AuthProvider";
 
 const Login = () => {
 
-  const {userSignIn} = useAuthContext()
+  const {userSignIn, forgotPassword, googleProvider} = useAuthContext()
 
 
   const loginSchema = object({
@@ -119,6 +119,7 @@ const Login = () => {
                   <Button
                     variant="contained"
                     type="submit"
+                    onClick={googleProvider}
                   >
                     Continue with Google 
                   </Button>
@@ -132,7 +133,7 @@ const Login = () => {
             justifyContent:"space-between"
           }}>
           <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/register">Forgot password?</Link>
+            <Link onClick={() => forgotPassword(email)}>Forgot password?</Link>
           </Box>
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/register">Do you have not an account?</Link>
