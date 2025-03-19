@@ -84,7 +84,6 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-
   const googleProvider = () => {
     //? Google ile giriş yapılması için kullanılan firebase metodu
     const provider = new GoogleAuthProvider();
@@ -102,17 +101,26 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  const forgotPassword = (email) => {
+    // set new password with email firebase method
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        // Password reset email sent!
+        toastWarnNotify("Please check your mail box!");
+      })
+      .catch((error) => {
+        toastErrorNotify(error.message);
+      });
+  };
 
-
-
-
-
-
-
-
-
-
-  const values = { currentUser, createUser, userSignIn, userLogOut,googleProvider };
+  const values = {
+    currentUser,
+    createUser,
+    userSignIn,
+    userLogOut,
+    googleProvider,
+    forgotPassword,
+  };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
