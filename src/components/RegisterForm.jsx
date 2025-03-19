@@ -34,7 +34,7 @@ const RegisterForm = ({
         <TextField
           label="User Name"
           name="username"
-          id="userName"
+          id="username"
           type="text"
           variant="outlined"
           value={values.username}

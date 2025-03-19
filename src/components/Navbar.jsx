@@ -161,14 +161,17 @@ export default function Navbar() {
             />
           </Search>
 
-
-          <Box sx={{ flexGrow: 1 }} />
+          <Typography sx={{
+            ml: 2
+          }}>
+            {currentUser?.displayName}
+            </Typography>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
-              // aria-controls={menuId}
+              aria-controls={menuId}
               aria-haspopup="true"
               onClick={e=> handleProfileMenuOpen(e)}
               color="inherit"
@@ -180,7 +183,7 @@ export default function Navbar() {
             <IconButton
               size="large"
               aria-label="show more"
-              // aria-controls={mobileMenuId}
+              aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={e => handleMobileMenuOpen(e)}
               color="inherit"
@@ -188,6 +191,7 @@ export default function Navbar() {
               <MoreIcon />
             </IconButton>
           </Box>
+          
         </Toolbar>
       </AppBar>
       {renderMenu}

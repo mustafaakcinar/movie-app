@@ -58,7 +58,7 @@ const Register = () => {
             }}
             validationSchema={registerSchema}
             onSubmit={(values, actions) => {
-              createUser(values.email,values.password)
+              createUser(values.email,values.password,values.username)
               actions.resetForm()
               actions.setSubmitting(false)
             }}

@@ -1,4 +1,10 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../auth/firebase";
 import { useNavigate } from "react-router-dom";
@@ -16,16 +22,20 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(()=> {
-    userObserver()
-  },[])
+  useEffect(() => {
+    userObserver();
+  }, []);
 
-
-  const createUser = async (email, password) => {
+  const createUser = async (email, password, displayName) => {
+    // console.log(displayName);
     try {
       // new user create method from firebase
       let newUser = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(auth.currentUser, {
+        displayName,
+      });
       // console.log(newUser);
+      // console.log(currentUser);
       navigate("/login");
       toastSuccessNotify("Registered succesfully");
     } catch (error) {
@@ -36,8 +46,10 @@ const AuthProvider = ({ children }) => {
   const userSignIn = async (email, password) => {
     try {
       // login for user
-     await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       // console.log(newUser);
+      console.log(currentUser);
+
       navigate("/");
       toastSuccessNotify("Logged succesfully");
     } catch (error) {
@@ -47,29 +59,28 @@ const AuthProvider = ({ children }) => {
 
   const userLogOut = async () => {
     try {
-        signOut(auth)
-        toastSuccessNotify("You have logged out")
-        navigate("/login")
+      signOut(auth);
+      toastSuccessNotify("You have logged out");
+      navigate("/login");
     } catch (error) {
-        toastErrorNotify(error.message);
+      toastErrorNotify(error.message);
     }
-  }
+  };
 
-//   bir kere çalıştırmamız yeterli giriş çıkışları kontrol eden firebase metodu
+  //   bir kere çalıştırmamız yeterli giriş çıkışları kontrol eden firebase metodu
   const userObserver = () => {
     onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // console.log(user);
-            const {email,displayName,photoURL} = user
-            setCurrentUser({email,displayName,photoURL})
-        } else {
-          // User is signed out
-            // console.log("logged out");
-            setCurrentUser(false)
-        }
-      })
-  }
-
+      if (user) {
+        // console.log(user);
+        const { email, displayName, photoURL } = user;
+        setCurrentUser({ email, displayName, photoURL });
+      } else {
+        // User is signed out
+        // console.log("logged out");
+        setCurrentUser(false);
+      }
+    });
+  };
 
   const values = { currentUser, createUser, userSignIn, userLogOut };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
