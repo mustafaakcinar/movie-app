@@ -29,6 +29,7 @@ const Login = () => {
       email: string().email("Lütfen geçerli email giriniz").required()
   });
 
+
   return (
     <Container maxWidth="lg">
       <Grid
@@ -133,7 +134,7 @@ const Login = () => {
             justifyContent:"space-between"
           }}>
           <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link onClick={() => forgotPassword(email)}>Forgot password?</Link>
+            <Link onClick={() => forgotPassword()}>Forgot password?</Link>
           </Box>
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/register">Do you have not an account?</Link>
