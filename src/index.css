@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.movie {
+  background-color:red ;
+  border-radius: 3px;
+  box-shadow: 4px 4px 5px rgba(63, 60, 60, 0.5);
+  overflow: hidden;
+  margin: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+
+body{
+  background-color: #BBDEFB
+}
+
+.tag {
+  border-radius: 5px;
+  padding: 0.7rem;
+  font-weight: bold;
+  width: 3rem;
+  text-align: center;
+}
+
+.tag.green {
+  background-color: #1b5e20;
+}
+
+.tag.orange {
+  background-color: #f57f17;
+}
+
+.tag.red {
+  background-color: #7f0000;
+}
+
+.movieImg{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
