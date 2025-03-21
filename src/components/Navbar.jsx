@@ -59,8 +59,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Navbar() {
   const {userLogOut, currentUser} = useAuthContext()
 
-  const [search, setSearch] = React.useState("");
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -150,17 +148,6 @@ export default function Navbar() {
           >
             POSEIDON TV-SERIES MOVIES
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </Search>
-
           <Typography sx={{
             ml: 2
           }}>
