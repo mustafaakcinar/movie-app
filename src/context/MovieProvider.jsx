@@ -18,13 +18,13 @@ const MovieProvider = ({children}) => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        getMovies()
+        getMovies(FEATURED_API)
     },[])
 
-    const getMovies = async () => {
+    const getMovies = async (URL) => {
         setLoading(true)
         try {
-            let data = await axios.get(FEATURED_API)
+            let data = await axios.get(URL)
             // console.log(data.data.results);
             setMovies(data.data.results)
         } catch (error) {
