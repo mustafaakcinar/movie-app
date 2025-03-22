@@ -15,9 +15,10 @@ const Main = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
+    getMovies(SEARCH_API + searchItem)
   }
   return (
+    // search için form eklenecek
     <>
       <Navbar />
       {loading ? (
