@@ -20,14 +20,14 @@ const Main = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (searchItem.trim() && currentUser) {
-    //   getMovies(SEARCH_API + searchItem);
-    // } else if (!currentUser) {
-    //   toastWarnNotify("Please log in to search a movie!");
-    // } else {
-    //   toastWarnNotify("Please enter a text!");
-    // }
-    getMovies(SEARCH_API + (searchItem.trim()))
+    if (searchItem.trim() && currentUser) {
+      getMovies(SEARCH_API + searchItem);
+    } else if (!currentUser) {
+      toastWarnNotify("Please log in to search a movie!");
+    } else {
+      toastWarnNotify("Please enter a text!");
+    }
+    // getMovies(SEARCH_API + (searchItem.trim()))
   };
   return (
     // search için form eklenecek
