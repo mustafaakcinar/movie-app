@@ -25,7 +25,7 @@ const MovieDetails = () => {
       .then((res) => setVideoKey(res.data.results[0].key))
       .catch((err) => console.log(err));
   }, []);
-
+// promise.all birden fazla aynı anda istek için kullanılabilir
   const {
     title,
     poster_path,
