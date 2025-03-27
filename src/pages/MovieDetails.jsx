@@ -36,48 +36,51 @@ const MovieDetails = () => {
   } = movieDetails;
 
   return (
-    <div className="md:container px-10 mx-auto py-5">
-      <h1 className="text-center text-white text-3xl">{title}</h1>
-      {/* {videoKey && <VideoSection videoKey={videoKey} />} */}
-      <div className="md:container flex justify-center px-10">
-        <div className="flex flex-col lg:flex-row max-w-6xl rounded-lg bg-gray-100 dark:bg-gray-dark-second shadow-lg">
-          <img
-            className=" lg:w-1/3 h-96 lg:h-[600px] object-cover rounded-t-lg md:rounded-none md:rounded-l-lg"
-            src={poster_path ? baseImageUrl + poster_path : defaultImage}
-            alt="poster"
-          />
-          <div className="p-6 flex flex-col justify-between">
-            <div>
-              <h5 className="text-gray-900 dark:text-gray-50 text-xl font-medium mb-2">
+<Container maxWidth="lg" sx={{ py: 5 }}>
+      <Typography variant="h3" align="center" color="white" mb={3}>
+        {title}
+      </Typography>
+      <Grid container justifyContent="center" spacing={3}>
+        <Grid item xs={12} md={8}>
+          <Card sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, borderRadius: 2, boxShadow: 3 }}>
+            <CardMedia
+              component="img"
+              sx={{ width: { xs: '100%', lg: '33%' }, height: { xs: 300, lg: 600 }, objectFit: 'cover', borderRadius: { xs: 2, lg: '10px 0 0 10px' } }}
+              image={poster_path ? `${baseImageUrl}${poster_path}` : defaultImage}
+              alt="Poster"
+            />
+            <CardContent sx={{ flex: 1 }}>
+              <Typography variant="h5" color="text.primary" mb={2}>
                 Overview
-              </h5>
-              <p className="text-gray-700 dark:text-gray-300  text-base mb-4">
+              </Typography>
+              <Typography variant="body1" color="text.secondary" paragraph>
                 {overview}
-              </p>
-            </div>
-            <ul className="rounded-lg border border-gray-400 text-gray-900 dark:text-gray-300">
-              <li className="px-6 py-2 border-b border-gray-400 w-full rounded-t-lg">
-                {"Release Date : " + release_date}
-              </li>
-              <li className="px-6 py-2 border-b border-gray-400 w-full">
-                {"Rate : " + vote_average}
-              </li>
-              <li className="px-6 py-2 border-b border-gray-400 w-full">
-                {"Total Vote : " + vote_count}
-              </li>
-              <li className="px-6 py-2 border-gray-400 w-full rounded-t-lg">
-                <Link
-                  to={-1}
-                  className="text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out mb-4"
-                >
-                  Go Back
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+              </Typography>
+              <List sx={{ border: 1, borderRadius: 1, borderColor: 'divider' }}>
+                <ListItem>
+                  <ListItemText primary={`Release Date: ${release_date}`} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={`Rate: ${vote_average}`} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={`Total Vote: ${vote_count}`} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={
+                      <Button component={Link} to={-1} variant="text" color="primary" fullWidth>
+                        Go Back
+                      </Button>
+                    }
+                  />
+                </ListItem>
+              </List>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 
