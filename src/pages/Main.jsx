@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import MovieCard from "../components/MovieCard";
 import { useMovieContext } from "../context/MovieProvider";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, Pagination, TextField } from "@mui/material";
 import Loading from "../components/Loading";
 import { toastWarnNotify } from "../helpers/ToastNotify";
 import { useAuthContext } from "../context/AuthProvider";
@@ -69,6 +69,7 @@ const Main = () => {
           {movies.map((movie) => (
             <MovieCard key={movie.id} {...movie} />
           ))}
+          <Pagination sx={{mt:2, mb:2}} count={10} variant="outlined" color="primary" />
         </Box>
       )}
     </>

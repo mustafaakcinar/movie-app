@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardMedia, Container, Grid2, List, ListItem, ListItemText, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -40,8 +40,8 @@ const MovieDetails = () => {
       <Typography variant="h3" align="center" color="white" mb={3}>
         {title}
       </Typography>
-      <Grid container justifyContent="center" spacing={3}>
-        <Grid item xs={12} md={8}>
+      <Grid2 container justifyContent="center" spacing={3}>
+        <Grid2 item xs={12} md={8}>
           <Card sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, borderRadius: 2, boxShadow: 3 }}>
             <CardMedia
               component="img"
@@ -78,8 +78,8 @@ const MovieDetails = () => {
               </List>
             </CardContent>
           </Card>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
     </Container>
   );
 };
