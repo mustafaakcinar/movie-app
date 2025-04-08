@@ -22,8 +22,8 @@ const Main = () => {
   } = useMovieContext();
   const { currentUser } = useAuthContext();
 
-  console.log(searchItem);
-  console.log(SEARCH_API + searchItem);
+  // console.log(searchItem);
+  // console.log(SEARCH_API + searchItem);
 
   
   const handlePageChange = (e,value) => {
@@ -42,8 +42,6 @@ const Main = () => {
     // getMovies(SEARCH_API + (searchItem.trim()))
   };
   return (
-    // search için form eklenecek
-
     <>
       <Navbar />
 
