@@ -21,6 +21,7 @@ const MovieProvider = ({ children }) => {
     try {
       let data = await axios.get(`${URL}&page=${currentPage}`);
       // console.log(data.data.results);
+      // console.log(data.data);
       setMovies(data.data.results);
       setTotalPages(data.data.total_pages)
     } catch (error) {
