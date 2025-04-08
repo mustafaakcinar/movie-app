@@ -12,11 +12,23 @@ const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}
 
 const Main = () => {
   const [searchItem, setSearchItem] = useState("");
-  const { movies, loading, getMovies } = useMovieContext();
+  const {
+    movies,
+    loading,
+    getMovies,
+    currentPage,
+    setCurrentPage,
+    totalPages
+  } = useMovieContext();
   const { currentUser } = useAuthContext();
 
   console.log(searchItem);
   console.log(SEARCH_API + searchItem);
+
+  
+  const handlePageChange = (e,value) => {
+    setCurrentPage(value);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +81,14 @@ const Main = () => {
           {movies.map((movie) => (
             <MovieCard key={movie.id} {...movie} />
           ))}
-          <Pagination sx={{mt:2, mb:2}} count={10} variant="outlined" color="primary" />
+          <Pagination
+            sx={{ mt: 2, mb: 2 }}
+            count={totalPages}
+            variant="outlined"
+            color="primary"
+            page={currentPage}
+            onChange={handlePageChange}
+          />
         </Box>
       )}
     </>

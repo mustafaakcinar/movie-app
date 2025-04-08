@@ -13,17 +13,16 @@ const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_
 const MovieProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0);
 
-  useEffect(() => {
-    getMovies(FEATURED_API);
-  }, []);
-
-  const getMovies = async (URL) => {
+  const getMovies = async (URL,currentPage) => {
     setLoading(true);
     try {
-      let data = await axios.get(URL);
+      let data = await axios.get(`${URL}&page=${currentPage}`);
       // console.log(data.data.results);
       setMovies(data.data.results);
+      setTotalPages(data.data.total_pages)
     } catch (error) {
       console.log(error);
     } finally {
@@ -31,8 +30,12 @@ const MovieProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    getMovies(FEATURED_API,currentPage);
+  }, [currentPage]);
+
   return (
-    <MovieContext.Provider value={{ movies, loading, getMovies }}>
+    <MovieContext.Provider value={{ movies, loading, getMovies, setCurrentPage,totalPages, currentPage }}>
       {children}
     </MovieContext.Provider>
   );
