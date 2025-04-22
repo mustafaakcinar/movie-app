@@ -42,7 +42,9 @@ const Main = () => {
     // getMovies(SEARCH_API + (searchItem.trim()))
   };
   return (
-    <>
+    <Box sx={{
+      backgroundColor:"red"
+    }}>
       <Navbar />
 
       <Box
@@ -50,7 +52,7 @@ const Main = () => {
         sx={{
           display: "flex",
           justifyContent: "end",
-          mt: 2,
+          mt: 2
         }}
       >
         <TextField
@@ -89,7 +91,7 @@ const Main = () => {
           />
         </Box>
       )}
-    </>
+    </Box>
   );
 };
 
