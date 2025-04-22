@@ -96,9 +96,10 @@ const Login = () => {
                     error={touched.email && Boolean(errors.email)}
                     onBlur={handleBlur}
                     helperText={errors.email}
+                    sx={{backgroundColor:"#1565C0"}}
                   />
                   <TextField
-                    label="password"
+                    label="Password"
                     name="password"
                     id="password"
                     type="password"
@@ -108,12 +109,16 @@ const Login = () => {
                     value={values.password}
                     error={touched.password && Boolean(errors.password)}
                     helperText={errors.password}
+                    sx={{backgroundColor:"#1565C0"}}
                   />
                   
                   <Button
                     variant="contained"
                     type="submit"
                     disabled={isSubmitting}
+                    sx={{
+                      backgroundColor:"#1659B7"
+                    }}
                   >
                     Sing In
                   </Button>
@@ -121,6 +126,9 @@ const Login = () => {
                     variant="contained"
                     type="submit"
                     onClick={googleProvider}
+                    sx={{
+                      backgroundColor:"#1659B7"
+                    }}
                   >
                     Continue with Google 
                   </Button>
@@ -131,13 +139,13 @@ const Login = () => {
 
           <Box sx={{
             display:"flex",
-            justifyContent:"space-between"
+            justifyContent:"space-between",
           }}>
           <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link onClick={() => forgotPassword()}>Forgot password?</Link>
+            <Link className="linkLogin" color="white" onClick={() => forgotPassword()}>Forgot password?</Link>
           </Box>
           <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/register">Do you have not an account?</Link>
+            <Link className="linkLogin" to="/register">Do you have not an account?</Link>
           </Box>
           </Box>
         </Grid>

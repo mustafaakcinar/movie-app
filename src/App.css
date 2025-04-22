@@ -24,3 +24,8 @@
 .loginPage {
   background-color: red;
 }
+
+.linkLogin {
+  color: white;
+  text-decoration: none;
+}

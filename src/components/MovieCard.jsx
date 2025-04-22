@@ -28,24 +28,26 @@ const MovieCard = ({title,poster_path,vote_average,id,overview}) => {
   };
 
   return (
-    <Card className='movie' sx={{ maxWidth: 275 , backgroundColor: "aqua"}} onClick={()=>navigate("/details/"+id)}>
+    <Card className='movie' sx={{ maxWidth: 275 , backgroundColor: "#111111"}} onClick={()=>navigate("/details/"+id)}>
       <CardMedia className='movieImg'
-        sx={{ height: 350, width: 275, objectFit:"cover" }}
+        sx={{ height: 330, width: 275 }}
         image={poster_path ? IMG_API + poster_path : defaultImage}
         title={title}
         loading="lazy"
       />
       <CardContent sx={{
         display:"flex",
-        justifyContent:"space-between",
-        alignItems:"center"
+        justifyContent:"center",
+        alignItems:"center",
+        color:"white"
+    
       }}>
         <Typography gutterBottom variant="h5" component="div">
           {title}
         </Typography>
-        <Box className={`tag ${getVoteClass()}`}>
+        {/* <Box className={`tag ${getVoteClass()}`}>
           {vote_average.toFixed(1)}
-        </Box>
+        </Box> */}
       </CardContent>
       {/* <CardActions>
         <Button size="small">Share</Button>

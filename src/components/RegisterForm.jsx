@@ -42,6 +42,7 @@ const RegisterForm = ({
           onBlur={handleBlur}
           error={touched.username && Boolean(errors.username)}
           helperText={errors.username}
+          sx={{backgroundColor:"#1565C0"}}
         />
         <TextField
           label="Email"
@@ -54,6 +55,7 @@ const RegisterForm = ({
           onBlur={handleBlur}
           error={touched.email && Boolean(errors.email)}
           helperText={errors.email}
+          sx={{backgroundColor:"#1565C0"}}
         />
         <TextField
           label="password"
@@ -66,6 +68,7 @@ const RegisterForm = ({
           onBlur={handleBlur}
           error={touched.password && Boolean(errors.password)}
           helperText={errors.password}
+          sx={{backgroundColor:"#1565C0"}}
         />
         <Button type="submit" variant="contained" size="large">
           Submit
