@@ -18,7 +18,7 @@ const Register = () => {
         container
         justifyContent="center"
         direction="row-reverse"
-        rowSpacing={{ sm: 3 }}
+        // rowSpacing={{ sm: 3 }}
         sx={{
           height: "100vh",
           p: 2,
