@@ -43,7 +43,7 @@ const Main = () => {
   };
   return (
     <Box sx={{
-      backgroundColor:"red"
+      backgroundColor:"#000022"
     }}>
       <Navbar />
 
@@ -60,9 +60,10 @@ const Main = () => {
           label="Search field"
           type="search"
           onChange={(e) => setSearchItem(e.target.value)}
+          sx={{backgroundColor:"#CCCCFF"}}
         />
-        <Button variant="contained" onClick={handleSubmit}>
-          Contained
+        <Button sx={{color:"#66CCFF"}} variant="contained" onClick={handleSubmit}>
+          Search
         </Button>
       </Box>
 

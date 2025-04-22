@@ -42,7 +42,7 @@ const Login = () => {
         }}
       >
         <Grid item xs={12} mb={3}>
-          <Typography variant="h4" color="primary" align="center">
+          <Typography variant="h4" color="black" align="center">
             POSEIDON MOVIE AND SERIES
           </Typography>
         </Grid>
