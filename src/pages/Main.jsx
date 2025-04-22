@@ -83,7 +83,7 @@ const Main = () => {
             <MovieCard key={movie.id} {...movie} />
           ))}
           <Pagination
-            sx={{ mt: 2, mb: 2 }}
+            sx={{ mt: 2, mb: 2, backgroundColor:"#1565C0" }}
             count={totalPages}
             variant="outlined"
             color="primary"

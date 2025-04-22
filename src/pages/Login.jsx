@@ -42,7 +42,7 @@ const Login = () => {
         }}
       >
         <Grid item xs={12} mb={3}>
-          <Typography variant="h4" color="black" align="center">
+          <Typography variant="h4" color="white" align="center">
             POSEIDON MOVIE AND SERIES
           </Typography>
         </Grid>
@@ -96,7 +96,7 @@ const Login = () => {
                     error={touched.email && Boolean(errors.email)}
                     onBlur={handleBlur}
                     helperText={errors.email}
-                    sx={{backgroundColor:"#1565C0"}}
+                    sx={{backgroundColor:"#1565C0","& label": { color: "white" }}}
                   />
                   <TextField
                     label="Password"
@@ -109,7 +109,7 @@ const Login = () => {
                     value={values.password}
                     error={touched.password && Boolean(errors.password)}
                     helperText={errors.password}
-                    sx={{backgroundColor:"#1565C0"}}
+                    sx={{backgroundColor:"#1565C0","& label": { color: "white" }}}
                   />
                   
                   <Button

@@ -1,8 +1,8 @@
-import Box from "@mui/material/Box"
-import Button from "@mui/material/Button"
-import TextField from "@mui/material/TextField"
-import { Form } from "formik"
-import { object, string } from "yup"
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { Form } from "formik";
+import { object, string } from "yup";
 
 export const registerSchema = object({
   username: string()
@@ -19,7 +19,7 @@ export const registerSchema = object({
     .matches(/[a-z]/, "Şifre bir küçük harf içermelidir")
     .matches(/[A-Z]/, "Şifre bir büyük harf içermelidir")
     .matches(/[!/[@$!%*?&]+/, "Şifre bir özel karakter içermelidir"),
-})
+});
 
 const RegisterForm = ({
   values,
@@ -42,7 +42,7 @@ const RegisterForm = ({
           onBlur={handleBlur}
           error={touched.username && Boolean(errors.username)}
           helperText={errors.username}
-          sx={{backgroundColor:"#1565C0"}}
+          sx={{ backgroundColor: "#1565C0", "& label": { color: "white" } }}
         />
         <TextField
           label="Email"
@@ -55,7 +55,7 @@ const RegisterForm = ({
           onBlur={handleBlur}
           error={touched.email && Boolean(errors.email)}
           helperText={errors.email}
-          sx={{backgroundColor:"#1565C0"}}
+          sx={{ backgroundColor: "#1565C0", "& label": { color: "white" } }}
         />
         <TextField
           label="password"
@@ -68,14 +68,14 @@ const RegisterForm = ({
           onBlur={handleBlur}
           error={touched.password && Boolean(errors.password)}
           helperText={errors.password}
-          sx={{backgroundColor:"#1565C0"}}
+          sx={{ backgroundColor: "#1565C0", "& label": { color: "white" } }}
         />
         <Button type="submit" variant="contained" size="large">
           Submit
         </Button>
       </Box>
     </Form>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;

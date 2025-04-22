@@ -1,4 +1,16 @@
-import { Box, Button, Card, CardContent, CardMedia, Container, Grid2, List, ListItem, ListItemText, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid2,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -25,7 +37,7 @@ const MovieDetails = () => {
       .then((res) => setVideoKey(res.data.results[0].key))
       .catch((err) => console.log(err));
   }, []);
-// promise.all birden fazla aynı anda istek için kullanılabilir
+  // promise.all birden fazla aynı anda istek için kullanılabilir
   const {
     title,
     poster_path,
@@ -36,17 +48,31 @@ const MovieDetails = () => {
   } = movieDetails;
 
   return (
-<Container maxWidth="lg" sx={{ py: 5 }}>
-      <Typography variant="h3" align="center" color="white" mb={3}>
+    <Container maxWidth="lg" sx={{ py: 5 }}>
+      <Typography variant="h3" align="center" color="whitesmoke" mb={3}>
         {title}
       </Typography>
       <Grid2 container justifyContent="center" spacing={3}>
         <Grid2 item xs={12} md={8}>
-          <Card sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, borderRadius: 2, boxShadow: 3 }}>
+          <Card
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", lg: "row" },
+              borderRadius: 2,
+              boxShadow: 3,
+            }}
+          >
             <CardMedia
               component="img"
-              sx={{ width: { xs: '100%', lg: '33%' }, height: { xs: 300, lg: 600 }, objectFit: 'cover', borderRadius: { xs: 2, lg: '10px 0 0 10px' } }}
-              image={poster_path ? `${baseImageUrl}${poster_path}` : defaultImage}
+              sx={{
+                width: { xs: "100%", lg: "33%" },
+                height: { xs: 300, lg: 600 },
+                objectFit: "cover",
+                borderRadius: { xs: 2, lg: "10px 0 0 10px" },
+              }}
+              image={
+                poster_path ? `${baseImageUrl}${poster_path}` : defaultImage
+              }
               alt="Poster"
             />
             <CardContent sx={{ flex: 1 }}>
@@ -56,7 +82,7 @@ const MovieDetails = () => {
               <Typography variant="body1" color="text.secondary" paragraph>
                 {overview}
               </Typography>
-              <List sx={{ border: 1, borderRadius: 1, borderColor: 'divider' }}>
+              <List sx={{ border: 1, borderRadius: 1, borderColor: "divider" }}>
                 <ListItem>
                   <ListItemText primary={`Release Date: ${release_date}`} />
                 </ListItem>
@@ -69,7 +95,13 @@ const MovieDetails = () => {
                 <ListItem>
                   <ListItemText
                     primary={
-                      <Button component={Link} to={-1} variant="text" color="primary" fullWidth>
+                      <Button
+                        component={Link}
+                        to={-1}
+                        variant="text"
+                        color="primary"
+                        fullWidth
+                      >
                         Go Back
                       </Button>
                     }

@@ -30,7 +30,7 @@ const MovieCard = ({title,poster_path,vote_average,id,overview}) => {
   return (
     <Card className='movie' sx={{ maxWidth: 275 , backgroundColor: "#111111"}} onClick={()=>navigate("/details/"+id)}>
       <CardMedia className='movieImg'
-        sx={{ height: 330, width: 275 }}
+        sx={{ height: 330, width: 275, objectFit:"cover" }}
         image={poster_path ? IMG_API + poster_path : defaultImage}
         title={title}
         loading="lazy"
