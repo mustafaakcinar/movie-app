@@ -8,9 +8,12 @@ import { Menu, MenuItem } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
 import { useAuthContext } from "../context/AuthProvider";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const { userLogOut, currentUser } = useAuthContext();
+
+  const navigate = useNavigate()
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -30,6 +33,28 @@ export default function Navbar() {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
+
+const handleLoginMenu = () => {
+  navigate("/login")
+  handleMenuClose()
+}
+
+const handleRegisterMenu = () => {
+  navigate("/register")
+  handleMenuClose()
+}
+
+const handleMobileLoginMenu = () =>
+{
+  navigate("/login")
+  handleMenuClose()
+}
+
+const handleMobileRegisterMenu = () =>
+  {
+    navigate("/login")
+    handleMenuClose()
+  }
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
@@ -66,8 +91,8 @@ export default function Navbar() {
         </>
       ) : (
         <>
-          <MenuItem onClick={handleMenuClose}>Login</MenuItem>
-          <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+          <MenuItem onClick={handleLoginMenu}>Login</MenuItem>
+          <MenuItem onClick={handleRegisterMenu}>Register</MenuItem>
         </>
       )}
     </Menu>
