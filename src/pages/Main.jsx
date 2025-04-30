@@ -86,7 +86,7 @@ const Main = () => {
             sx={{ mt: 2, mb: 2, backgroundColor:"#1565C0" }}
             count={totalPages}
             variant="outlined"
-            color="primary"
+            color="#E0E0E0"
             page={currentPage}
             onChange={handlePageChange}
           />

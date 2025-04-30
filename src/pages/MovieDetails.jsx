@@ -49,7 +49,7 @@ const MovieDetails = () => {
 
   return (
     <Container maxWidth="lg" sx={{ py: 5 }}>
-      <Typography variant="h3" align="center" color="whitesmoke" mb={3}>
+      <Typography variant="h3" align="center" color="#E0E0E0" mb={3}>
         {title}
       </Typography>
       <Grid2 container justifyContent="center" spacing={3}>
@@ -75,14 +75,14 @@ const MovieDetails = () => {
               }
               alt="Poster"
             />
-            <CardContent sx={{ flex: 1 }}>
-              <Typography variant="h5" color="text.primary" mb={2}>
+            <CardContent sx={{ flex: 1, backgroundColor:"#2F343D" }}>
+              <Typography variant="h5" color="#E0E0E0" mb={2}>
                 Overview
               </Typography>
-              <Typography variant="body1" color="text.secondary" paragraph>
+              <Typography variant="body1" color="#E0E0E0" paragraph>
                 {overview}
               </Typography>
-              <List sx={{ border: 1, borderRadius: 1, borderColor: "divider" }}>
+              <List sx={{ border: 1, borderRadius: 1, borderColor: "divider", color:"#E0E0E0" }}>
                 <ListItem>
                   <ListItemText primary={`Release Date: ${release_date}`} />
                 </ListItem>
