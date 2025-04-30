@@ -6,8 +6,19 @@ Project aims to create a Movie App.
 
 ## Problem Statement
 
-In this project, we have developed a system that allows users to create offers using car images and detailed information. Users can make offers on cars they are interested in, and the offers are listed and categorized based on whether the cars are sold or not.
+This is a simple and modern movie web application built with React. It fetches data from a public movie API and allows users to view popular movies, explore details, and perform search queries. The project demonstrates essential concepts of modern frontend development such as component-based structure, API integration, routing, and responsive design.
 
+## Technologies Used
+
+- React – A JavaScript library for building user interfaces.
+
+- Axios –  HTTP client for making API requests.
+
+- React Router – Client-side routing and navigation between pages.
+
+- Material UI – A popular React UI framework for building responsive and modern user interfaces.
+
+- Movie API – External API providing movie data (e.g., TMDB, Fake Movie API).
 
 ## Objective
 
