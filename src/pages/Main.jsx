@@ -18,17 +18,16 @@ const Main = () => {
     getMovies,
     currentPage,
     setCurrentPage,
-    totalPages
+    totalPages,
   } = useMovieContext();
   const { currentUser } = useAuthContext();
 
   // console.log(searchItem);
   // console.log(SEARCH_API + searchItem);
 
-  
-  const handlePageChange = (e,value) => {
+  const handlePageChange = (e, value) => {
     setCurrentPage(value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,9 +41,11 @@ const Main = () => {
     // getMovies(SEARCH_API + (searchItem.trim()))
   };
   return (
-    <Box sx={{
-      backgroundColor:"#000022"
-    }}>
+    <Box
+      sx={{
+        backgroundColor: "#000022",
+      }}
+    >
       <Navbar />
 
       <Box
@@ -52,7 +53,7 @@ const Main = () => {
         sx={{
           display: "flex",
           justifyContent: "end",
-          mt: 2
+          mt: 2,
         }}
       >
         <TextField
@@ -60,9 +61,13 @@ const Main = () => {
           label="Search field"
           type="search"
           onChange={(e) => setSearchItem(e.target.value)}
-          sx={{backgroundColor:"#CCCCFF"}}
+          sx={{ backgroundColor: "#0D47A1", color:"white" }}
         />
-        <Button sx={{color:"#66CCFF"}} variant="contained" onClick={handleSubmit}>
+        <Button
+          sx={{ backgroundColor: "#0D47A1" }}
+          variant="contained"
+          onClick={handleSubmit}
+        >
           Search
         </Button>
       </Box>
@@ -70,26 +75,51 @@ const Main = () => {
       {loading ? (
         <Loading />
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: 2,
-            mt: 2,
-          }}
-        >
-          {movies.map((movie) => (
-            <MovieCard key={movie.id} {...movie} />
-          ))}
-          <Pagination
-            sx={{ mt: 2, mb: 2, backgroundColor:"#1565C0" }}
-            count={totalPages}
-            variant="outlined"
-            color="#E0E0E0"
-            page={currentPage}
-            onChange={handlePageChange}
-          />
+        <Box sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: 2,
+          mt: 2,
+        }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: 2,
+              mt: 2,
+            }}
+          >
+            {movies.map((movie) => (
+              <MovieCard key={movie.id} {...movie} />
+            ))}
+          </Box>
+
+            <Pagination
+              sx={{
+                mt: 2,
+                mb: 2,
+                '& .MuiPaginationItem-root': {
+                  color: '#E0E0E0',
+                  backgroundColor: '#0D47A1',
+                  borderColor: '#1976d2',
+                  '&.Mui-selected': {
+                    backgroundColor: '#1E88E5', 
+                    color: '#ffffff',
+                  },
+                  '&:hover': {
+                    backgroundColor: '#1565C0', 
+                  },
+                },
+              }}
+              count={totalPages}
+              variant="outlined"
+              color="#E0E0E0"
+              page={currentPage}
+              onChange={handlePageChange}
+            />
+
         </Box>
       )}
     </Box>
