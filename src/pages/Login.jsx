@@ -139,11 +139,8 @@ const Login = () => {
 
           <Box sx={{
             display:"flex",
-            justifyContent:"space-between",
+            justifyContent:"center",
           }}>
-          {/* <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link className="linkLogin" color="white" onClick={() => forgotPassword()}>Forgot password?</Link>
-          </Box> */}
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link className="linkLogin" to="/register">Do you have not an account?</Link>
           </Box>
