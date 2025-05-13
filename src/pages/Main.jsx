@@ -15,10 +15,10 @@ const Main = () => {
   const {
     movies,
     loading,
-    getMovies,
     currentPage,
     setCurrentPage,
     totalPages,
+    searchMovies
   } = useMovieContext();
   const { currentUser } = useAuthContext();
 
@@ -32,7 +32,7 @@ const Main = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchItem.trim() && currentUser) {
-      getMovies(SEARCH_API + searchItem);
+      searchMovies(SEARCH_API + searchItem);
     } else if (!currentUser) {
       toastWarnNotify("Please log in to search a movie!");
     } else {

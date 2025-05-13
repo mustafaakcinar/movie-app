@@ -60,7 +60,6 @@ const handleMobileRegisterMenu = () =>
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  // tıklama eventine iki farklı işlev vereceğimiz için bu şekilde birleştirdik tek eventi iki kere kullanıp iki farklı işlev veremeyiz
   const handleLogOut = () => {
     setAnchorEl(null);
     handleMobileMenuClose();

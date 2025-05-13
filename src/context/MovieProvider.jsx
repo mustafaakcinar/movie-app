@@ -10,13 +10,14 @@ export const useMovieContext = () => {
 const API_KEY = process.env.REACT_APP_TMDB_KEY;
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
 
+
 const MovieProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0);
 
-  const getMovies = async (URL,currentPage) => {
+  const getMovies = async (URL,currentPage=1) => {
     setLoading(true);
     try {
       let data = await axios.get(`${URL}&page=${currentPage}`);
@@ -31,12 +32,24 @@ const MovieProvider = ({ children }) => {
     }
   };
 
+  const searchMovies = async (searchItem) => {
+    setLoading(true)
+    try {
+      let data = await axios.get(`${searchItem}`)
+      setMovies(data.data.results)
+    } catch (error) {
+      console.log(error);
+    }finally{
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
     getMovies(FEATURED_API,currentPage);
   }, [currentPage]);
 
   return (
-    <MovieContext.Provider value={{ movies, loading, getMovies, setCurrentPage,totalPages, currentPage }}>
+    <MovieContext.Provider value={{ movies, loading, getMovies, setCurrentPage,totalPages, currentPage, searchMovies }}>
       {children}
     </MovieContext.Provider>
   );
